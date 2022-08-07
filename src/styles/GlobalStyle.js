@@ -11,7 +11,6 @@ const GlobalStyle = createGlobalStyle`
         padding: 0;
         margin: 0;
         scroll-behavior: smooth;
-        background-color: var(--bg-color);
         font-family: var(--font-lato);
         
     }

@@ -4,14 +4,14 @@ const variables = css`
 
     :root {
 
-        --bg-color: #222222;
-        --secondary-bg-color: #4C4C4C;
+        --bg-color: #fff;
+        --secondary-bg-color: #888888;
 
         --dark-shadow: #222222;
         
-        --primary-color: #DBDBDB;
-        --secondary-color: #ACADAD;
-        --highlight-color: #57b6f5;
+        --primary-color: #131112;
+        --secondary-color: #60656F;
+        --highlight-color: #52b0f7;
 
         --font-lato: 'Lato', sans-serif;
     }
