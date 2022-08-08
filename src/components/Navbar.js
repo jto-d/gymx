@@ -74,7 +74,7 @@ const StyledMenu = styled.div`
       padding: 1rem;
       width: 60%;
       height: 100vh;
-      background-color: var(--secondary-bg-color);
+      background-color: var(--bg-color);
       box-shadow: 0 10px 30px -10px var(--dark-shadow);
 
       display: flex;
@@ -87,7 +87,6 @@ const StyledMenu = styled.div`
           width: 30px;
           height: 30px;
           color: var(--highlight-color);
-          background-color: var(--secondary-bg-color);
           margin: 1rem;
       }
 
@@ -97,7 +96,6 @@ const StyledMenu = styled.div`
           padding: 0;
           height: 100%;
           width: 100%;
-          background-color: var(--secondary-bg-color);
 
           display: flex;
           justify-content: center;
@@ -110,7 +108,6 @@ const StyledMenu = styled.div`
 
           a {
               color: var(--primary-color);
-              background-color: var(--secondary-bg-color);
               text-decoration: none;
               font-size: 1rem;
               text-transform: uppercase;
@@ -145,12 +142,15 @@ const Navbar = () => {
     
     <StyledNav>
       <StyledLogo>
-        <span>Exercise Tracker</span>
+        <span>GYMX</span>
       </StyledLogo>
       <StyledLinks>
-        {['home', 'exercises', 'tracker', 'login'].map((item) => (
+        <li key='link-home'>
+          <a href={'/'}>home</a>
+        </li>
+        {['exercises', 'tracker', 'login'].map((item) => (
             <li key={`link-${item}`}>
-              <a href={`#${item}`}>{item}</a>
+              <a href={`/${item}`}>{item}</a>
             </li>
           ))}
       </StyledLinks>
@@ -164,7 +164,10 @@ const Navbar = () => {
           >
             <HiX onClick={() => setToggle(false)}/>
             <ul>
-              {['home', 'evercises', 'tracker', 'login'].map((item) => (
+              <li key='link-home'>
+                <a href={'/'}>home</a>
+              </li>
+              {['evercises', 'tracker', 'login'].map((item) => (
                 <li key={item}>
                   <a href={`#${item}`} onClick={() => setToggle(false)}>{item}</a>
                 </li>

@@ -1,7 +1,7 @@
 import React from 'react'
 import { Route, Routes } from 'react-router-dom'
-import { Home, ExerciseDetail } from './pages'
-import { Navbar } from './components'
+import { Home, ExerciseDetail, Tracker, Register, Login } from './pages'
+import { Navbar, Footer } from './components'
 
 const App = () => {
   return (
@@ -12,8 +12,13 @@ const App = () => {
 
             <Route path="/exercise/:id" element={<ExerciseDetail />} />
 
-        </Routes>
+            <Route path="/tracker/" element={<Tracker />} />
 
+            <Route path="/register/" element={<Register />} />
+
+            <Route path="/login/" element={<Login />} />
+        </Routes>
+        <Footer />
     </div>
   )
 }

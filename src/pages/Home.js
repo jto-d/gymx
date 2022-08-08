@@ -1,5 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
+import curve1 from '../assets/curves/curve1.svg'
+import curve2 from '../assets/curves/curve2.svg'
+import curve3 from '../assets/curves/curve3.svg'
 
 const StyledMain = styled.div`
   display: flex;
@@ -10,9 +13,16 @@ const StyledMain = styled.div`
   min-height: 100vh;
   padding: 0;
 
+  aspect-ratio: 960/300;
+  width: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  background-image: url(${curve1});
+
 `
 
-const StyledMainText = styled.div`
+const StyledText = styled.div`
   margin: 0 0 10rem 15%;
   
   h1 {
@@ -85,14 +95,16 @@ const StyledFeatures = styled.div`
   justify-content: center;
   align-items: flex-end;
   flex-direction: column;
-  height: 60vh;
+  height: 40vh;
   width: 100%;
   background-color: var(--highlight-color);
   color: var(--primary-color);
+  text-align: right;
+
+
 
   p, h1 {
     margin: 20px 15% 0 0;
-    text-align: right;
     width: 44%;
 
   }
@@ -101,6 +113,7 @@ const StyledFeatures = styled.div`
     font-size: 1.7rem;
     line-height: 2rem;
     font-weight: 400;
+    margin-bottom: 15%;
   }
 
   h1 {
@@ -111,25 +124,55 @@ const StyledFeatures = styled.div`
 
 `
 
+const StyledDescription = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 80vh;
+  width: 100%;
+
+  aspect-ratio: 960/300;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  background-image: url(${curve2});
+
+  text-align: center;
+
+  h1{
+    color: var(--primary-color);
+    font-weight: 600;
+    font-size: 3rem;
+    width: 100%;
+  }
+
+  p {
+    font-size: 1.5rem;
+    margin-top: 10px;
+  }
+
+`
+
 const Main = () => {
   return (
     <><StyledMain>
-      <StyledMainText>
+      <StyledText>
         <h1>Introducing GymX</h1>
         <h2>A new way to track workouts.</h2>
-        <p>I'm a college student and software engineer based out of New Jersey. I create
-          applications using code: websites, neural networks, and everything
-          in between.
+        <p>Ever wish you had an easy way to keep track of your progress while going to the gym? Want
+          learn exercises to target different muscle groups or get the most bang for your buck with 
+          cardio? GymX is for you!
         </p>
         <StyledButtons>
           <StyledButton>
-            <a href="#about">Register</a>
+            <a href="/register">Register</a>
           </StyledButton>
           <StyledButton>
-            <a href="#about">Login</a>
+            <a href="/login">Login</a>
           </StyledButton>
         </StyledButtons>
-      </StyledMainText>
+      </StyledText>
     </StyledMain>
     <StyledFeatures>
         <h1>Features</h1>
@@ -137,7 +180,15 @@ const Main = () => {
           in addition to our workout calendar and tracker. Customize your workout plan and visualize progress in a new,
           modern, and exciting way.
         </p>
-    </StyledFeatures></>
+    </StyledFeatures>
+
+    <StyledDescription>
+      <h1>Want to give us a try?</h1>
+      <p>Simply register and give us a go... It's completely free!</p>
+      <StyledButton style={{ marginTop: `40px` }}>
+        <a href="/register">Get Started</a>
+      </StyledButton>
+    </StyledDescription></>
   )
 }
 

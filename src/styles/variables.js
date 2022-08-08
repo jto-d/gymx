@@ -5,7 +5,7 @@ const variables = css`
     :root {
 
         --bg-color: #fff;
-        --secondary-bg-color: #888888;
+        --secondary-bg-color: #dbdbdb;
 
         --dark-shadow: #222222;
         
