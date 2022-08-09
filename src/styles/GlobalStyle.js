@@ -14,6 +14,7 @@ const GlobalStyle = createGlobalStyle`
         font-family: var(--font-lato);
         
     }
+
 `
 
 

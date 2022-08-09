@@ -11,7 +11,9 @@ const variables = css`
         
         --primary-color: #131112;
         --secondary-color: #60656F;
+
         --highlight-color: #52b0f7;
+        --dark-highlight-color: #3079b1;
 
         --font-lato: 'Lato', sans-serif;
     }

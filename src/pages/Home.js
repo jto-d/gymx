@@ -1,5 +1,5 @@
 import React from 'react'
-import styled from 'styled-components'
+import styled, { css }  from 'styled-components'
 import curve1 from '../assets/curves/curve1.svg'
 import curve2 from '../assets/curves/curve2.svg'
 import curve3 from '../assets/curves/curve3.svg'
@@ -59,36 +59,45 @@ const StyledButtons = styled.div`
 
   flex-direction: row;
 
-`
-
-const StyledButton = styled.div`
-
-  margin-right: 20px;
-
-  a {
-    padding: 1rem 1.5rem;
-  
-    background-color: var(--highlight-color);
-    box-shadow: 1px 1px 3px var(--dark-shadow);
-    /* border: 1px solid var(--highlight-color); */
-    font-size: 1.25rem;
-    font-weight: 300;
-    letter-spacing: .1em;
-    border-radius: 5px;
-    cursor: pointer;
-
-    color: var(--bg-color);
-    text-decoration: none;
-
-    transition: all 0.3s ease-in-out;
-
-    &:hover {
-      background-color: var(--secondary-bg-color);
-      
-    }
+  a+a{
+    margin-left: 20px;
   }
 
 `
+
+const StyledButton = styled.button`
+  padding: 1rem 1.5rem;
+
+  background-color: var(--highlight-color);
+  box-shadow: 1px 1px 3px var(--dark-shadow);
+  /* border: 1px solid var(--highlight-color); */
+  font-size: 1.25rem;
+  font-weight: 300;
+  letter-spacing: .1em;
+  border-radius: 5px;
+  cursor: pointer;
+
+  color: var(--bg-color);
+  text-decoration: none;
+
+  transition: all 0.3s ease-in-out;
+
+  &:hover {
+    background-color: var(--dark-highlight-color);
+  }
+
+  ${props => props.invert && css`
+    background-color: var(--primary-color);
+    color: var(--bg-color);
+
+    &:hover {
+      background-color: var(--secondary-color);
+    }
+
+  `}
+
+`
+
 
 const StyledFeatures = styled.div`
   display: flex;
@@ -165,12 +174,8 @@ const Main = () => {
           cardio? GymX is for you!
         </p>
         <StyledButtons>
-          <StyledButton>
-            <a href="/register">Register</a>
-          </StyledButton>
-          <StyledButton>
-            <a href="/login">Login</a>
-          </StyledButton>
+            <StyledButton as="a" href="/register">Register</StyledButton>
+            <StyledButton as="a" href="/login">Login</StyledButton>
         </StyledButtons>
       </StyledText>
     </StyledMain>
@@ -180,14 +185,16 @@ const Main = () => {
           in addition to our workout calendar and tracker. Customize your workout plan and visualize progress in a new,
           modern, and exciting way.
         </p>
+        <StyledButtons css={{marginRight: "15%"}}>
+          <StyledButton invert as="a" href="/exercises">Browse Exercises</StyledButton>
+          <StyledButton invert as="a" href="/tracker">View Tracker</StyledButton>
+        </StyledButtons>
     </StyledFeatures>
 
     <StyledDescription>
       <h1>Want to give us a try?</h1>
       <p>Simply register and give us a go... It's completely free!</p>
-      <StyledButton style={{ marginTop: `40px` }}>
-        <a href="/register">Get Started</a>
-      </StyledButton>
+        <StyledButton as="a" href="/register">Get Started</StyledButton>
     </StyledDescription></>
   )
 }
