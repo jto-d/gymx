@@ -10,7 +10,7 @@ const StyledMain = styled.div`
 
   flex-direction: column;
   align-items: flex-start;
-  min-height: 100vh;
+  min-height: 95vh;
   padding: 0;
 
   aspect-ratio: 960/300;
@@ -113,7 +113,6 @@ const StyledFeatures = styled.div`
     font-size: 1.7rem;
     line-height: 2rem;
     font-weight: 400;
-    margin-bottom: 15%;
   }
 
   h1 {
@@ -129,12 +128,13 @@ const StyledDescription = styled.div`
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  height: 80vh;
-  width: 100%;
+  height: 90vh;
 
-  aspect-ratio: 960/300;
+
+  aspect-ratio: 900/300;
+  width: 100%;
   background-repeat: no-repeat;
-  background-position: center;
+  background-position: contain;
   background-size: cover;
   background-image: url(${curve2});
 
