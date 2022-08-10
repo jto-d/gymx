@@ -102,8 +102,10 @@ const StyledButton = styled.button`
 const StyledFeatures = styled.div`
   display: flex;
   justify-content: center;
-  align-items: flex-end;
   flex-direction: column;
+  align-items: flex-end;
+  padding-right: 15%;
+  padding-top: 5%;
   height: 40vh;
   width: 100%;
   background-color: var(--highlight-color);
@@ -111,9 +113,7 @@ const StyledFeatures = styled.div`
   text-align: right;
 
 
-
   p, h1 {
-    margin: 20px 15% 0 0;
     width: 44%;
 
   }
@@ -122,6 +122,8 @@ const StyledFeatures = styled.div`
     font-size: 1.7rem;
     line-height: 2rem;
     font-weight: 400;
+    margin-top: 20px;
+    margin-bottom: -15px;
   }
 
   h1 {
@@ -137,7 +139,7 @@ const StyledDescription = styled.div`
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  height: 90vh;
+  height: 75vh;
 
 
   aspect-ratio: 900/300;
@@ -154,11 +156,13 @@ const StyledDescription = styled.div`
     font-weight: 600;
     font-size: 3rem;
     width: 100%;
+    margin-top: 10%;
   }
 
   p {
     font-size: 1.5rem;
     margin-top: 10px;
+    margin-bottom: 15px;
   }
 
 `
@@ -185,7 +189,7 @@ const Main = () => {
           in addition to our workout calendar and tracker. Customize your workout plan and visualize progress in a new,
           modern, and exciting way.
         </p>
-        <StyledButtons css={{marginRight: "15%"}}>
+        <StyledButtons>
           <StyledButton invert as="a" href="/exercises">Browse Exercises</StyledButton>
           <StyledButton invert as="a" href="/tracker">View Tracker</StyledButton>
         </StyledButtons>
@@ -194,7 +198,7 @@ const Main = () => {
     <StyledDescription>
       <h1>Want to give us a try?</h1>
       <p>Simply register and give us a go... It's completely free!</p>
-        <StyledButton as="a" href="/register">Get Started</StyledButton>
+      <StyledButton as="a" href="/register">Get Started</StyledButton>
     </StyledDescription></>
   )
 }
