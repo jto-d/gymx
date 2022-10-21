@@ -1,6 +1,6 @@
 import React from 'react'
 import { Route, Routes } from 'react-router-dom'
-import { Home, ExerciseDetail, Tracker, Register, Login } from './pages'
+import { Home, Exercise, ExerciseDetail, Tracker, Register, Login } from './pages'
 import { Navbar, Footer } from './components'
 
 const App = () => {
@@ -9,6 +9,8 @@ const App = () => {
         <Navbar />
         <Routes>
             <Route path="/" element={<Home />} />
+
+            <Route path="/exercises/" element={<Exercise />} />
 
             <Route path="/exercise/:id" element={<ExerciseDetail />} />
 
