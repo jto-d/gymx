@@ -1,2 +1,5 @@
 export { default as Navbar } from './Navbar'
 export { default as Footer } from './Footer'
+export { default as HorizontalScrollbar } from './HorizontalScrollbar'
+export { default as Exercises } from './Exercises'
+export { default as ExerciseSearch } from './ExerciseSearch'
