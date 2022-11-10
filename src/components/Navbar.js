@@ -18,13 +18,14 @@ const StyledLogo = styled.div`
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  span {
+  a {
       margin-left: 1rem;
       color: var(--highlight-color);
       font-weight: 600;
       text-transform: uppercase;
       font-size: 1rem;
       letter-spacing: .2em;
+      text-decoration: none;
   }
 `
 const StyledLinks = styled.ul`
@@ -142,7 +143,7 @@ const Navbar = () => {
     
     <StyledNav>
       <StyledLogo>
-        <span>GYMX</span>
+        <a href={'/'}>GYMX</a>
       </StyledLogo>
       <StyledLinks>
         <li key='link-home'>
