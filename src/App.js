@@ -1,6 +1,6 @@
 import React from 'react'
 import { Route, Routes } from 'react-router-dom'
-import { Home, Exercise, Tracker, Register, Login, DetailedExercise } from './pages'
+import { Home, Exercise, Tracker, Register, Login, Stats, DetailedExercise } from './pages'
 import { Navbar, Footer } from './components'
 
 const App = () => {
@@ -15,6 +15,8 @@ const App = () => {
             <Route path="/exercise/:id" element={<DetailedExercise />} />
 
             <Route path="/tracker/" element={<Tracker />} />
+
+            <Route path="/stats/" element={<Stats />} />
 
             <Route path="/register/" element={<Register />} />
 

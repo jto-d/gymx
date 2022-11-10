@@ -18,8 +18,28 @@ mongoose.connect(mongoUrl,{
 app.listen(4000, () => console.log("server is up"))
 
 require("./models/userDetails")
+require("./models/workoutTracker")
 
 const User = mongoose.model("userInfo")
+const Tracker = mongoose.model("workoutTracker")
+
+app.post("/api/tracker", async (req, res) => {
+    const {workout, weight, sets, reps } = req.body
+    console.log(req.body)
+
+    try {
+        await Tracker.create({
+            workout,
+            weight,
+            sets,
+            reps,
+        })
+        res.json({status:"ok"})
+    } catch (error) {
+        res.json({status: "error"})
+    }
+
+})
 
 app.post("/api/register", async (req,res) => {
     const { firstName, lastName, email, password } = req.body;
