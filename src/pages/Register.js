@@ -111,30 +111,27 @@ const Register = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
 
-  async function registerUser(e) {
-    e.preventDefault()
-    
-    const response = await fetch("http://localhost:4000/register",{
-      method: "POST",
-      crossDomain: true,
-      headers: {
-        'Content-Type': 'application/json',
-        accept: 'application/json',
-        'Access-Control-Allow-Origin': '*'
-      },
-      body: JSON.stringify({
-        firstName,
-        lastName,
-        email,
-        password
-      })
-    })
+  async function registerUser(event) {
+		event.preventDefault()
 
-    const data = await response.json()
+		const response = await fetch('http://localhost:4000/api/register', {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json',
+			},
+			body: JSON.stringify({
+				firstName,
+        lastName,
+				email,
+				password,
+			}),
+		})
+
+		const data = await response.json()
     console.log(data)
-      
-      
-  }
+
+	}
+
 
 
   return (
@@ -145,6 +142,7 @@ const Register = () => {
         <StyledEntry>
           <label>First Name</label>
           <input
+            value={firstName}
             type="text"
             placeholder="First Name"
             onChange={(e) => setFirstName(e.target.value)}
@@ -154,6 +152,7 @@ const Register = () => {
         <StyledEntry>
           <label>Last Name</label>
           <input 
+            value={lastName}
             type="text" 
             placeholder="Last Name" 
             onChange={(e) => setLastName(e.target.value)}
@@ -163,6 +162,7 @@ const Register = () => {
         <StyledEntry>
           <label>Email Address</label>
           <input
+            value={email}
             type="email"
             placeholder="Enter Email"
             onChange={(e) => setEmail(e.target.value)}
@@ -172,6 +172,7 @@ const Register = () => {
         <StyledEntry>
           <label>Password</label>
           <input
+            value={password}
             type="password"
             placeholder="Enter Password"
             onChange={(e) => setPassword(e.target.value)}

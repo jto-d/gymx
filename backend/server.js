@@ -1,9 +1,9 @@
 const express = require('express')
 const app = express()
-app.use(express.json())
-
 const cors = require('cors')
-app.use(cors)
+const jwt = require("jsonwebtoken")
+app.use(express.json())
+app.use(cors())
 
 const mongoose = require('mongoose')
 
@@ -19,19 +19,41 @@ app.listen(4000, () => console.log("server is up"))
 
 require("./models/userDetails")
 
-const user = mongoose.model("userInfo")
+const User = mongoose.model("userInfo")
 
-app.post("/register", async(req,res) => {
+app.post("/api/register", async (req,res) => {
     const { firstName, lastName, email, password } = req.body;
+    console.log(req.body)
     try {
-        await user.create({
+        await User.create({
             firstName,
             lastName,
             email,
             password
         })
-        res.send({status:"ok"})
+        res.json({status:"ok"})
     } catch (error) {
-        res.send({status: "error"})
+        res.json({status: "error"})
+    }
+})
+
+app.post("/api/login", async (req,res) => {
+    const { email, password } = req.body;
+
+    const user = await User.findOne({
+        email,
+        password
+    })
+
+    if (user) {
+        const token = jwt.sign({
+            name: user.name,
+            email: user.email,
+        },
+        'secretcode72'
+        )
+        return res.json({ status: 'ok', user: token})
+    } else {
+        return res.json({ status: 'error', user: false})
     }
 })

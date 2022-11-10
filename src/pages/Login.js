@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled, { css } from 'styled-components'
 
 const Container = styled.div`
@@ -106,9 +106,37 @@ const StyledButton = styled.button`
 
 
 const Login = () => {
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+
+  async function loginUser(event) {
+		event.preventDefault()
+
+		const response = await fetch('http://localhost:4000/api/login', {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json',
+			},
+			body: JSON.stringify({
+				email,
+				password,
+			}),
+		})
+
+		const data = await response.json()
+    
+    if(data.user) {
+      alert('Login Successful')
+      window.location.href = '/tracker'
+    } else {
+      alert('Incorrect Email and Password')
+    }
+
+	}
+
   return (
     <Container>
-      <StyledForm>
+      <StyledForm onSubmit={loginUser}>
         <h3>Sign In</h3>
 
         <StyledEntry>
@@ -116,6 +144,7 @@ const Login = () => {
           <input
             type="email"
             placeholder="Enter Email"
+            onChange={(e) => setEmail(e.target.value)}
           />
         </StyledEntry>
 
@@ -124,6 +153,7 @@ const Login = () => {
           <input
             type="password"
             placeholder="Enter Password"
+            onChange={(e) => setPassword(e.target.value)}
           />
         </StyledEntry>
 
