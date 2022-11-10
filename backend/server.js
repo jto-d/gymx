@@ -41,6 +41,20 @@ app.post("/api/tracker", async (req, res) => {
 
 })
 
+app.post("/api/stats", async (req,res) => {
+    const { workout } = req.body;
+
+    const tracker = await Tracker.find({
+        workout
+    })
+
+    if (tracker) {
+        return res.json({ status: 'ok', workouts: tracker})
+    } else {
+        return res.json({ status: 'error', user: false})
+    }
+})
+
 app.post("/api/register", async (req,res) => {
     const { firstName, lastName, email, password } = req.body;
     console.log(req.body)

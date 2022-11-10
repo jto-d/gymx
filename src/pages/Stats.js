@@ -1,20 +1,23 @@
-import React, { useState } from 'react'
+import React, { useState, useRef, useEffect } from 'react'
 import styled, { css } from 'styled-components'
+
 
 const Container = styled.div`
   background-color: var(--highlight-color);
   height: 92vh;
   width: 100%;
-  justify-content: center;
   display: flex;
+  flex-direction: column;
+  align-items: center;
   
 `
 
 const StyledForm = styled.form`
   height: 15vh;
+  margin-top: 20px;
 
 
-  margin-top: 50px;
+
 
   background-color: var(--secondary-bg-color);
   width: 50%;
@@ -43,6 +46,7 @@ const StyledForm = styled.form`
   
 `
 
+
 const StyledEntry = styled.div`
   width: 80%;
 
@@ -60,7 +64,7 @@ const StyledEntry = styled.div`
 
   input {
     margin-top: 3px;
-    width: 100%;
+    width: 450px;
     height: 30px;
     font-size: 15px;
     border: none;
@@ -74,9 +78,12 @@ const StyledEntry = styled.div`
 `
 
 const StyledButton = styled.button`
-  margin-top: 20px;
-  width: 80%;
-  padding: 10px 0;
+  position: absolute;
+  margin-top: 3px;
+  margin-left: 10px;
+  width: 10%;
+  padding: 7px 0;
+  align-items: center;
 
   border: none;
   background-color: var(--highlight-color);
@@ -109,29 +116,25 @@ const StyledButton = styled.button`
 
 const Stats = () => {
   const [workout, setWorkout] = useState('')
-  const [weight, setWeight] = useState('')
-  const [sets, setSets] = useState('')
-  const [reps, setReps] = useState('')
+  const [data, setData] = useState([])
 
   async function viewWorkout(event) {
     console.log("yes")
-// 		event.preventDefault()
+		event.preventDefault()
 
-// 		const response = await fetch('http://localhost:4000/api/tracker', {
-// 			method: 'POST',
-// 			headers: {
-// 				'Content-Type': 'application/json',
-// 			},
-// 			body: JSON.stringify({
-//         workout,
-//         weight,
-//         sets,
-//         reps
-// 			}),
-// 		})
+		const response = await fetch('http://localhost:4000/api/stats', {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json',
+			},
+			body: JSON.stringify({
+                workout
+			}),
+		})
 
-// 		const data = await response.json()
-//     console.log(data)
+		const data = await response.json()
+        setData(data.workouts)
+        
 
 	}
 
@@ -139,16 +142,36 @@ const Stats = () => {
     <Container>
       <StyledForm onSubmit={viewWorkout}>
         <h3>Enter Workout</h3>
-
         <StyledEntry>
-          <label>Workout Name</label>
-          <input
-            type="text"
-            placeholder="Enter Workout Name"
-            onChange={(e) => setWorkout(e.target.value)}
-          />
+            <label>Workout Name</label>
+            <div flexdirection="row"  >
+                <input
+                    type="text"
+                    placeholder="Enter Workout Name"
+                    onChange={(e) => setWorkout(e.target.value)}
+                />
+                <StyledButton type="submit">
+                    Enter
+                </StyledButton>
+            </div>
         </StyledEntry>
       </StyledForm>
+        <table style={{margin: '30px', width: '60%', textAlign: 'center'}}>
+            <tbody>
+                <tr>
+                    <th>Weight</th>
+                    <th>Reps</th>
+                    <th>Sets</th>
+                </tr>
+                {data.map((item, index) => (
+                    <tr key = {index}>
+                        <td style={{ padding: '10px', border: '1px solid black' }}>{item.weight}</td>
+                        <td style={{ padding: '10px', border: '1px solid black' }}>{item.reps}</td>
+                        <td style={{ padding: '10px', border: '1px solid black' }}>{item.sets}</td>
+                    </tr>
+                ))}
+            </tbody>
+        </table>
     </Container>
   )
 }
